@@ -1,0 +1,1 @@
+# vermont-covid-count-notifier
