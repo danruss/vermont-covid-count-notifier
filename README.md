@@ -1,7 +1,7 @@
 # vermont-covid-count-notifier
 
 ## Overview
-This serverless solution uses a `poller` lambda function to check the daily COVID-19 case data on the [Health Vermont API](https://services1.arcgis.com/BkFxaEFNwHqX3tAw/arcgis/rest/services/VIEW_EPI_DailyCount_PUBLIC_r3/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json) on a 5-minute interval.  If new data is found with the previous day's COVID-19 case count, it will add the item to DynamoDB.  
+This serverless solution uses a `poller` lambda function to check the daily COVID-19 case data on the [Health Vermont API](https://geodata.vermont.gov/datasets/VCGI::vt-covid-19-daily-counts-table/about) on a 5-minute interval.  If new data is found with the previous day's COVID-19 case count, it will add the item to DynamoDB.  
 
 A DynamoDB stream is configured for new items which invokes the `tweeter` function.  The `tweeter` function uses the Twitter API (via https://github.com/PLhery/node-twitter-api-v2) to send a tweet with the updated case counts.
 

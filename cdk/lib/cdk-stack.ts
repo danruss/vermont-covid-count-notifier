@@ -32,7 +32,7 @@ export class CdkStack extends cdk.Stack {
 
     let poller = new lambda.Function(this, 'poller', {
       runtime: lambda.Runtime.NODEJS_14_X,
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/poller')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../src/lambda/poller')),
       handler: 'poller.handler',
       role: pollerRole,
       environment: {
@@ -61,7 +61,7 @@ export class CdkStack extends cdk.Stack {
     // DynamoDB Stream function to tweet when new data received
     let tweeter = new lambda.Function(this, 'tweeter', {
       runtime: lambda.Runtime.NODEJS_14_X,
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/tweeter')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../src/lambda/tweeter')),
       handler: 'tweeter.handler',
       timeout: cdk.Duration.seconds(30),
       memorySize: 1024,
